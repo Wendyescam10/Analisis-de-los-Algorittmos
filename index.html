@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Análisis de Algoritmos</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f6dbe5;
+text-align:center;
+}
+
+h1{
+color:#cc0066;
+}
+
+.autores{
+margin-top:10px;
+font-size:18px;
+line-height:1.6;
+color:#660033;
+}
+
+.tabs{
+margin-top:20px;
+}
+
+button{
+background:#ff99cc;
+border:none;
+padding:12px 18px;
+margin:5px;
+cursor:pointer;
+font-weight:bold;
+border-radius:10px;
+}
+
+button:hover{
+background:#ff66b2;
+}
+
+.tabcontent{
+display:none;
+padding:25px;
+background:white;
+margin:20px auto;
+border-radius:15px;
+box-shadow:0px 0px 10px #bbb;
+width:80%;
+}
+
+pre{
+background:#f2f2f2;
+padding:15px;
+border-radius:10px;
+text-align:left;
+}
+
+canvas{
+max-width:500px;
+margin:25px auto;
+display:block;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+th,td{
+border:1px solid #aaa;
+padding:8px 15px;
+}
+
+th{
+background:#ffcce0;
+}
+
+.proceso{
+background:#fff0f6;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌸 Análisis de Algoritmos</h1>
+
+<div class="autores">
+<b>Trabajo elaborado por:</b><br>
+Wendy Alejandra Escamilla Blanca<br>
+Odalys Daniela Hernandez Mendez
+</div>
+
+<div class="tabs">
+<button onclick="openTab('intro')">Notación</button>
+<button onclick="openTab('a')">Inciso A</button>
+<button onclick="openTab('b')">Inciso B</button>
+<button onclick="openTab('c')">Inciso C</button>
+<button onclick="openTab('d')">Inciso D</button>
+<button onclick="openTab('comp')">Comparación</button>
+</div>
+
+<!-- NOTACION -->
+
+<div id="intro" class="tabcontent">
+
+<h2>Notación Asintótica</h2>
+
+<p>La notación Big-O nos ayuda a entender cómo crece el tiempo de ejecución de un algoritmo.</p>
+
+<table>
+
+<tr>
+<th>Notación</th>
+<th>Crecimiento</th>
+</tr>
+
+<tr>
+<td>O(n)</td>
+<td>Lineal</td>
+</tr>
+
+<tr>
+<td>O(n²)</td>
+<td>Cuadrático</td>
+</tr>
+
+<tr>
+<td>O(n³)</td>
+<td>Cúbico</td>
+</tr>
+
+<tr>
+<td>O(2ⁿ)</td>
+<td>Exponencial</td>
+</tr>
+
+</table>
+
+<canvas id="lineal"></canvas>
+<canvas id="cuadratica"></canvas>
+<canvas id="cubica"></canvas>
+<canvas id="exponencial"></canvas>
+
+</div>
+
+<!-- INCISO A -->
+
+<div id="a" class="tabcontent">
+
+<h2>Algoritmo A - Multiplicación de matrices</h2>
+
+<pre>
+for i = 1 hasta n
+   for j = 1 hasta n
+      for k = 1 hasta n
+         operación
+</pre>
+
+<div class="proceso">
+
+<h3>Proceso con n = 5</h3>
+
+<p><b>Paso 1:</b> El ciclo i se repite n veces.</p>
+
+<p><b>Paso 2:</b> Dentro de i se ejecuta el ciclo j n veces.</p>
+
+<p><b>Paso 3:</b> Dentro de j se ejecuta el ciclo k n veces.</p>
+
+<table>
+
+<tr>
+<th>Ciclo</th>
+<th>Repeticiones</th>
+</tr>
+
+<tr>
+<td>i</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>j</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>k</td>
+<td>5</td>
+</tr>
+
+</table>
+
+<p><b>Total de operaciones:</b></p>
+
+<p>5 × 5 × 5 = 125</p>
+
+<p><b>Complejidad final → O(n³)</b></p>
+
+</div>
+
+<canvas id="grafA"></canvas>
+
+</div>
+
+<!-- INCISO B -->
+
+<div id="b" class="tabcontent">
+
+<h2>Algoritmo B</h2>
+
+<pre>
+for i = 1 hasta n
+   for j = i+1 hasta n
+      for k = 1 hasta j
+         operación
+</pre>
+
+<div class="proceso">
+
+<h3>Proceso con n = 5</h3>
+
+<table>
+
+<tr>
+<th>i</th>
+<th>Valores de j</th>
+<th>Iteraciones de k</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2,3,4,5</td>
+<td>1..5</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>3,4,5</td>
+<td>1..5</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>4,5</td>
+<td>1..5</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>5</td>
+<td>1..5</td>
+</tr>
+
+</table>
+
+<p>El crecimiento sigue siendo cúbico.</p>
+
+<p><b>Complejidad → O(n³)</b></p>
+
+</div>
+
+<canvas id="grafB"></canvas>
+
+</div>
+
+<!-- INCISO C -->
+
+<div id="c" class="tabcontent">
+
+<h2>Algoritmo C</h2>
+
+<pre>
+for i = 1 hasta n
+   si i es impar
+      for j = i hasta n
+   si no
+      for j = 1 hasta i
+</pre>
+
+<div class="proceso">
+
+<h3>Proceso con n = 5</h3>
+
+<table>
+
+<tr>
+<th>i</th>
+<th>Tipo</th>
+<th>Iteraciones</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Impar</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Par</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Impar</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Par</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Impar</td>
+<td>1</td>
+</tr>
+
+</table>
+
+<p>La suma de operaciones crece aproximadamente como n².</p>
+
+<p><b>Complejidad → O(n²)</b></p>
+
+</div>
+
+<canvas id="grafC"></canvas>
+
+</div>
+
+<!-- INCISO D -->
+
+<div id="d" class="tabcontent">
+
+<h2>Algoritmo D - Recursivo</h2>
+
+<pre>
+funcion recursiva(n)
+
+if n <= 1
+ return 1
+else
+ return recursiva(n-1) + recursiva(n-1)
+</pre>
+
+<div class="proceso">
+
+<h3>Proceso con n = 5</h3>
+
+<table>
+
+<tr>
+<th>Nivel</th>
+<th>Llamadas</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>16</td>
+</tr>
+
+</table>
+
+<p>Cada llamada genera dos nuevas llamadas.</p>
+
+<p><b>Complejidad → O(2ⁿ)</b></p>
+
+</div>
+
+<canvas id="grafD"></canvas>
+
+</div>
+
+<!-- COMPARACION -->
+
+<div id="comp" class="tabcontent">
+
+<h2>Comparación de complejidades</h2>
+
+<p>Aquí podemos observar cómo crecen los algoritmos al aumentar n.</p>
+
+<canvas id="comparacion"></canvas>
+
+</div>
+
+<script>
+
+let n=[1,2,3,4,5]
+
+function crearGrafica(id,tipo){
+
+let datos
+
+if(tipo=="lineal") datos=n
+if(tipo=="cuadratica") datos=n.map(x=>x*x)
+if(tipo=="cubica") datos=n.map(x=>x*x*x)
+if(tipo=="exp") datos=n.map(x=>Math.pow(2,x))
+
+new Chart(document.getElementById(id),{
+type:"line",
+data:{
+labels:n,
+datasets:[{
+label:tipo,
+data:datos,
+borderWidth:3
+}]
+}
+})
+
+}
+
+function openTab(tab){
+
+let x=document.getElementsByClassName("tabcontent")
+
+for(let i=0;i<x.length;i++){
+x[i].style.display="none"
+}
+
+document.getElementById(tab).style.display="block"
+
+if(tab=="intro"){
+crearGrafica("lineal","lineal")
+crearGrafica("cuadratica","cuadratica")
+crearGrafica("cubica","cubica")
+crearGrafica("exponencial","exp")
+}
+
+if(tab=="a") crearGrafica("grafA","cubica")
+if(tab=="b") crearGrafica("grafB","cubica")
+if(tab=="c") crearGrafica("grafC","cuadratica")
+if(tab=="d") crearGrafica("grafD","exp")
+
+if(tab=="comp"){
+
+new Chart(document.getElementById("comparacion"),{
+type:"line",
+data:{
+labels:n,
+datasets:[
+{label:"O(n)",data:n,borderWidth:3},
+{label:"O(n²)",data:n.map(x=>x*x),borderWidth:3},
+{label:"O(n³)",data:n.map(x=>x*x*x),borderWidth:3},
+{label:"O(2ⁿ)",data:n.map(x=>Math.pow(2,x)),borderWidth:3}
+]
+}
+})
+
+}
+
+}
+
+openTab("intro")
+
+</script>
+
+</body>
+</html>
